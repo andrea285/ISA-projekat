@@ -24,4 +24,11 @@ public class KorisnikServiceImpl implements KorisnikService {
     public Korisnik findById(Long Id) {
         return korisnikRepository.findById(Id).orElse(null);
     }
+
+    @Override
+    public Korisnik update(Korisnik korisnik) {
+        return korisnikRepository.saveAndFlush(korisnik);
+    }
+
+
 }
