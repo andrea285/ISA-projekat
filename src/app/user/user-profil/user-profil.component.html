@@ -1,0 +1,78 @@
+<div class="container">
+  <div class="row">
+  <div class="col">
+    <div class="row">
+      <table class="table table-hover" >
+        <tbody>
+        <tr>
+          <td>First Name</td>
+          <th>{{user.firstName}}</th>
+        </tr>
+        <tr>
+          <td>Last Name</td>
+          <th>{{user.lastName}}</th>
+        </tr>
+        <tr>
+          <td>Email</td>
+          <th>{{user.email}}</th>
+        </tr>
+        <tr>
+          <td>Password</td>
+          <th>{{user.password}}</th>
+        </tr>
+        <tr>
+          <td>Job</td>
+          <th>{{user.job}}</th>
+        </tr>
+        <tr>
+          <td>Address</td>
+          <th>{{user.address}}</th>
+        </tr>
+        <tr>
+          <td>City</td>
+          <th>{{user.city}}</th>
+        </tr>
+        <tr>
+          <td>State</td>
+          <th>{{user.state}}</th>
+        </tr>
+        <tr>
+          <td>Gender</td>
+          <th>{{user.gender}}</th>
+        </tr>
+        <tr>
+          <td>Phone</td>
+          <th>{{user.phone}}</th>
+        </tr>
+        <tr>
+          <td>Info</td>
+          <th>{{user.id}}</th>
+        </tr>
+        </tbody>
+      </table>
+      <a class="btn btn-primary" [routerLink]="['/user-update']" [queryParams]="{id: user.id}" queryParamsHandling="merge">Update</a>
+    </div>
+    </div>
+  <div class="col">
+    <div class="row">
+      <table class="table table-hover">
+        <tbody>
+        <tr>
+          <td>User Type</td>
+          <th>Registered user</th>
+        </tr>
+        <tr>
+          <td>Points</td>
+          <th>250</th>
+        </tr>
+        <tr>
+          <td>Loyalty</td>
+          <th>***</th>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  </div>
+
+</div>
