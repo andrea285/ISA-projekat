@@ -14,13 +14,7 @@ spring:
 server:
   forward-headers-strategy: framework
 
-logging:
-  level:
-    root: WARN
 
-    org:
-      hibernate:
-        SQL: DEBUG
 springdoc:
   swagger-ui:
     path: /api-docs
