@@ -7,12 +7,14 @@ import {AppRoutingModule} from "./app-routing.module";
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { UserProfilComponent } from './user/user-profil/user-profil.component';
+import { SearchCentarComponent } from './search-centar/search-centar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserComponent,
-    UserProfilComponent
+    UserProfilComponent,
+    SearchCentarComponent
   ],
   imports: [
     BrowserModule,

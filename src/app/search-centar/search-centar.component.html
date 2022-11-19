@@ -1,0 +1,61 @@
+<div class="container">
+  <div class="row">
+    <div class="row">
+
+      <div class="col">
+        <label for="name">Company name</label>
+        <input id="name" type="text" placeholder="Please enter company name" [(ngModel)]="centar.name">
+      </div>
+      <div class="col">
+        <label for="address">Company address</label>
+        <input id="address" type="text" placeholder="Please enter company address" [(ngModel)]="centar.address">
+      </div>
+        <button (click)="searchByText()">Search</button>
+
+      <div class="col">
+        <button (click)="sortAscDesc('asc')">A-Z</button>
+      </div>
+      <div class="col">
+        <button (click)="sortAscDesc('desc')">Z-A</button>
+      </div>
+
+      <div class="col">
+        <input id="free" type="checkbox" class="form-check-input" (click)="checkAvailability($event)">
+        <label class="form-check-label" for="free" >Scheduled appointment</label>
+      </div>
+
+
+
+
+<!--
+      //<input type="text" placeholder="Please enter company name">
+-->
+
+    </div>
+    <div class="row">
+      <table class="table table-hover">
+        <thead>
+        <tr>
+          <th>Naziv Centra</th>
+          <th>Grad</th>
+          <th>Ocena</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let c of ds">
+          <td>
+            {{c.name}}
+          </td>
+          <td>
+            {{c.address}}
+          </td>
+          <td>
+            {{c.review}}
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>

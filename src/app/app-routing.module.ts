@@ -4,11 +4,13 @@ import {RouterModule, Routes} from "@angular/router";
 import {AppComponent} from "./app.component";
 import {UserComponent} from "./user/user.component";
 import {UserProfilComponent} from "./user/user-profil/user-profil.component";
+import {SearchCentarComponent} from "./search-centar/search-centar.component";
 
 const routes: Routes=[
   {path: '', component: AppComponent},
   {path: 'user-update', component: UserComponent},
-  {path: 'user', component: UserProfilComponent}
+  {path: 'user', component: UserProfilComponent},
+  {path: 'centar', component: SearchCentarComponent}
 
 ];
 
