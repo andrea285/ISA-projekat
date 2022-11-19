@@ -7,8 +7,8 @@ import java.util.List;
 
 public interface CentarRepository extends JpaRepository<Centar, Long> {
 
-    List<Centar> findAllByAddress(String address);
-    List<Centar> findAllByName(String name);
+    List<Centar> findAllByAddressContainingIgnoreCase(String address);
+    List<Centar> findAllByNameContainingIgnoreCase(String name);
     List<Centar> findByOrderByReviewAsc();
     List<Centar> findByOrderByReviewDesc();
     List<Centar> findAllByReservation(Boolean free);

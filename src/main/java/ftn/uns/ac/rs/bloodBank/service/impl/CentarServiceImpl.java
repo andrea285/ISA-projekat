@@ -27,12 +27,12 @@ public class CentarServiceImpl implements CentarService {
 
     @Override
     public List<Centar> findByAddress(String city) {
-        return centarRepository.findAllByAddress(city);
+        return centarRepository.findAllByAddressContainingIgnoreCase(city);
     }
 
     @Override
     public List<Centar> findByName(String name) {
-        return centarRepository.findAllByName(name);
+        return centarRepository.findAllByNameContainingIgnoreCase(name);
     }
 
     @Override
