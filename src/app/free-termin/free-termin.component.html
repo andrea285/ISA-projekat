@@ -1,0 +1,37 @@
+
+      <mat-form-field appearance="standard">
+        <mat-label>Choose a date</mat-label>
+        <input matInput [matDatepicker]="picker" [(ngModel)]="date">
+
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <input [ngxTimepicker]="picker1" placeholder="click to choose time" [(ngModel)]="time">
+      <ngx-material-timepicker #picker1></ngx-material-timepicker>
+
+      <label for="duration">Input duration of appointment</label>
+      <input id="duration" type="number" placeholder="min of appointment" max="30" min="5" [(ngModel)]="duration">
+
+      <button (click)="createTerm()">Save</button>
+
+
+  <div class="row">
+    <table class="table table-hover">
+      <thead>
+      <tr>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Duration</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let t of termin">
+        <td>{{t.date}}</td>
+        <td>{{t.time}}</td>
+        <td>{{t.duration}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+

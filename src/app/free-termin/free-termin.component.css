@@ -1,0 +1,11 @@
+input#mat-input-0 {
+  display: none;
+}
+
+button.mat-focus-indicator.mat-icon-button.mat-button-base {
+  float: right;
+}
+
+mat-datepicker-toggle.mat-datepicker-toggle.ng-tns-c72-0 {
+  float: right;
+}

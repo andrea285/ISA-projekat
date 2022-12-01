@@ -8,20 +8,37 @@ import {HttpClientModule} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { UserProfilComponent } from './user/user-profil/user-profil.component';
 import { SearchCentarComponent } from './search-centar/search-centar.component';
+import { FreeTerminComponent } from './free-termin/free-termin.component';
+import {MatFormField, MatFormFieldControl, MatFormFieldModule, MatHint} from "@angular/material/form-field";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatNativeDateModule} from "@angular/material/core";
+import {MatInputModule} from "@angular/material/input";
+import {MatIconModule} from "@angular/material/icon";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {NgxMaterialTimepickerModule} from "ngx-material-timepicker";
+
 
 @NgModule({
   declarations: [
     AppComponent,
     UserComponent,
     UserProfilComponent,
-    SearchCentarComponent
+    SearchCentarComponent,
+    FreeTerminComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatInputModule,
+    MatIconModule,
+    BrowserAnimationsModule,
+    NgxMaterialTimepickerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
