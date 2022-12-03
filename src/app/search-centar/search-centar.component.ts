@@ -25,7 +25,9 @@ export class SearchCentarComponent implements OnInit {
     admins: '',
     medWorkers: '',
     dateAndTime: '',
-    duration: 0
+    duration: 0,
+    start: '',
+    end: ''
   }
 
   searchParams: SearchParameters = {

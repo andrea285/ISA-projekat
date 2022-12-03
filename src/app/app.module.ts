@@ -16,6 +16,7 @@ import {MatInputModule} from "@angular/material/input";
 import {MatIconModule} from "@angular/material/icon";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {NgxMaterialTimepickerModule} from "ngx-material-timepicker";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
 
 
 @NgModule({
@@ -38,7 +39,9 @@ import {NgxMaterialTimepickerModule} from "ngx-material-timepicker";
     MatInputModule,
     MatIconModule,
     BrowserAnimationsModule,
-    NgxMaterialTimepickerModule
+    NgxMaterialTimepickerModule,
+    MatSnackBarModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

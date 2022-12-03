@@ -29,6 +29,13 @@ export class FreeTerminService {
       duration: duration
     };
 
+
+
     return this.http.post<FreeTermin>('http://localhost:8080/api/v1/termin', this.term)
   }
+
+  /*getAllCenters(){
+    return this.http.get
+  }*/
+
 }

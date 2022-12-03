@@ -8,6 +8,8 @@ export interface Centar {
   admins: string,
   medWorkers: string,
   dateAndTime: any,
-  duration: number
+  duration: number,
+  start: string,
+  end: string
 
 }
