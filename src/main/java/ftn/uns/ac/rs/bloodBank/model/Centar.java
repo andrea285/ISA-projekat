@@ -19,11 +19,15 @@ public class Centar {
     private String medWorkers;
     private Date dateAndTime;
     private Double duration;
+    private String start;
+    private String end;
+
+
 
     public Centar() {
     }
 
-    public Centar(Long id, String name, String address, String description, Double review, Boolean reservation, String admins, String medWorkers, Date dateAndTime, Double duration) {
+    public Centar(Long id, String name, String address, String description, Double review, Boolean reservation, String admins, String medWorkers, Date dateAndTime, Double duration, String start, String end) {
         this.id = id;
         this.name = name;
         this.address = address;
@@ -34,9 +38,11 @@ public class Centar {
         this.medWorkers = medWorkers;
         this.dateAndTime = dateAndTime;
         this.duration = duration;
+        this.start = start;
+        this.end = end;
     }
 
-    public Centar(String name, String address, String description, Double review, Boolean reservation, String admins, String medWorkers, Date dateAndTime, Double duration) {
+    public Centar(String name, String address, String description, Double review, Boolean reservation, String admins, String medWorkers, Date dateAndTime, Double duration, String start, String end) {
         this.name = name;
         this.address = address;
         this.description = description;
@@ -46,6 +52,8 @@ public class Centar {
         this.medWorkers = medWorkers;
         this.dateAndTime = dateAndTime;
         this.duration = duration;
+        this.start = start;
+        this.end = end;
     }
 
     public Long getId() {
@@ -126,5 +134,21 @@ public class Centar {
 
     public void setDuration(Double duration) {
         this.duration = duration;
+    }
+
+    public String getStart() {
+        return start;
+    }
+
+    public void setStart(String start) {
+        this.start = start;
+    }
+
+    public String getEnd() {
+        return end;
+    }
+
+    public void setEnd(String end) {
+        this.end = end;
     }
 }
