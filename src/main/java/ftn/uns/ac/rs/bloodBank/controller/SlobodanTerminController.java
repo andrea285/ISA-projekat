@@ -29,9 +29,17 @@ public class SlobodanTerminController {
 
     //@PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping
-    public ResponseEntity<SlobodanTermin> save(@RequestBody SlobodanTermin slobodanTermin){
-        log.error("slobodan termin {}", slobodanTermin.toString());
-        return new ResponseEntity<>(slobodanTerminImpl.save(slobodanTermin), HttpStatus.CREATED);
+    public ResponseEntity<?> save(@RequestBody SlobodanTermin slobodanTermin){
+        log.error("does exist {}", slobodanTerminImpl.isAvailable(slobodanTermin.getDate(), slobodanTermin.getTime(), slobodanTermin.getDuration()));
+        if(!slobodanTerminImpl.isAvailable(slobodanTermin.getDate(), slobodanTermin.getTime(), slobodanTermin.getDuration())){
+
+            return new ResponseEntity<>(slobodanTerminImpl.save(slobodanTermin), HttpStatus.CREATED);
+        }
+        else{
+            return new ResponseEntity<>("", HttpStatus.BAD_REQUEST);
+        }
     }
+
+
 
 }

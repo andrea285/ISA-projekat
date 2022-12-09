@@ -11,16 +11,16 @@ public class SlobodanTermin {
 
     private String date;
     private String time;
-    private Double duration; //min
+    private Integer duration; //min
 
-    public SlobodanTermin(Long id, String date, String time, Double duration) {
+    public SlobodanTermin(Long id, String date, String time, Integer duration) {
         this.id = id;
         this.date = date;
         this.time = time;
         this.duration = duration;
     }
 
-    public SlobodanTermin(String date, String time, Double duration) {
+    public SlobodanTermin(String date, String time, Integer duration) {
         this.date = date;
         this.time = time;
         this.duration = duration;
@@ -45,11 +45,11 @@ public class SlobodanTermin {
         this.time = time;
     }
 
-    public Double getDuration() {
+    public Integer getDuration() {
         return duration;
     }
 
-    public void setDuration(Double duration) {
+    public void setDuration(Integer duration) {
         this.duration = duration;
     }
 
