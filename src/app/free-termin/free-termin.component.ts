@@ -4,6 +4,7 @@ import {FreeTermin} from "./free-termin";
 import {CentarService} from "../search-centar/centar.service";
 import {Centar} from "../search-centar/centar";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {catchError, of} from "rxjs";
 
 @Component({
   selector: 'app-free-termin',
@@ -62,12 +63,24 @@ export class FreeTerminComponent implements OnInit {
     let e = Number(this.centar.end.replace(':', '.'));
     if(t < e && t > s){
 
-    this.http.postAllFreeTerm(this.date, this.time, this.duration).subscribe(value => {
-      console.log('aaaaaaaaaaaaaaaaaaaaaa');
-    });}
+
+      this.http.postAllFreeTerm(this.date, this.time, this.duration).pipe(catchError(err => of([]))).subscribe(value => {
+        this.http.getAllFreeTerm().subscribe({
+          complete: () => {
+            /*this.http.getAllFreeTerm().subscribe(value => {
+              this.termin=value;
+            })*/
+          }, // completeHandler
+          error: () => {
+            console.log('uhvacena greska');
+            this.openSnackBar("vreme termina vec postoji","")
+          },    // errorHandler
+        });
+
+      });
+    }
     else{
-      console.log('neispravno vreme');
-      this.openSnackBar('neispravno vreme', 'izaberite ')
+      this.openSnackBar('neispravno vreme, molimo Vas izaberite vreme od '+s+' do '+e, '')
     }
   }
 

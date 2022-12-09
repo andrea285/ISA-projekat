@@ -17,6 +17,7 @@ import {MatIconModule} from "@angular/material/icon";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {NgxMaterialTimepickerModule} from "ngx-material-timepicker";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
+import {MaterialExampleModule} from "./material/material.module";
 
 
 @NgModule({
@@ -41,6 +42,7 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
     BrowserAnimationsModule,
     NgxMaterialTimepickerModule,
     MatSnackBarModule,
+    MaterialExampleModule
 
   ],
   providers: [],
