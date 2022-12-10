@@ -16,12 +16,8 @@ export class FreeTerminComponent implements OnInit {
   date: string = '';
   time: string = '';
   duration: number = 5;
-  term: FreeTermin = {
-    id: 0,
-    date: this.date,
-    time: this.time,
-    duration: this.duration
-  }
+
+
 
 
   centers: Centar[] = [];
@@ -39,6 +35,16 @@ export class FreeTerminComponent implements OnInit {
     start: '',
     end: ''
   }
+
+  term: FreeTermin = {
+    id: 0,
+    date: this.date,
+    time: this.time,
+    duration: this.duration,
+    centar: this.centar
+  }
+
+
   start: string = ''
   chooseCenter(center: Centar){
     console.log(center.name);
@@ -62,22 +68,30 @@ export class FreeTerminComponent implements OnInit {
     let s = Number(this.centar.start.replace(':', '.'));
     let e = Number(this.centar.end.replace(':', '.'));
     if(t < e && t > s){
+      if(this.duration >= 5 && this.duration <= 30){
 
 
-      this.http.postAllFreeTerm(this.date, this.time, this.duration).pipe(catchError(err => of([]))).subscribe(value => {
-        this.http.getAllFreeTerm().subscribe({
-          complete: () => {
-            /*this.http.getAllFreeTerm().subscribe(value => {
-              this.termin=value;
-            })*/
-          }, // completeHandler
-          error: () => {
-            console.log('uhvacena greska');
-            this.openSnackBar("vreme termina vec postoji","")
-          },    // errorHandler
-        });
+      this.http.postAllFreeTerm(this.date, this.time, this.duration, this.centar).subscribe({
+        error: (e)=>{
+          this._snackBar.open('termin nije kreiran jer izabrano vreme vec postoji u bazi', 'zatvori', {
+            duration:2000
+          })
+        },
+        complete:()=>{
+          this.http.getAllFreeTerm().subscribe(value => {
+            this.termin=value;
+          })
+          this._snackBar.open('termin je kreiran', 'zatvori', {
+            duration:2000
+          })
+        }
+      })
 
-      });
+    }else{
+        this._snackBar.open('trajanje mora biti izmedju 5 i 30min', 'zatvori', {
+          duration:2000
+        })
+      }
     }
     else{
       this.openSnackBar('neispravno vreme, molimo Vas izaberite vreme od '+s+' do '+e, '')

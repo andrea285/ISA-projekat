@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {FreeTermin} from "./free-termin";
 import {formatDate} from "@angular/common";
+import {Centar} from "../search-centar/centar";
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,7 @@ export class FreeTerminService {
     return this.http.get<FreeTermin[]>('http://localhost:8080/api/v1/termin')
   }
 
-  postAllFreeTerm(date: string, time: string, duration: number){
+  postAllFreeTerm(date: string, time: string, duration: number, centar: Centar){
 
 
     let fd = formatDate(date, 'yyyy-MM-dd', 'en_us');
@@ -26,7 +27,8 @@ export class FreeTerminService {
       id:0,
       date: fd,
       time: time,
-      duration: duration
+      duration: duration,
+      centar: centar
     };
 
 

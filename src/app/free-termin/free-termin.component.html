@@ -6,7 +6,7 @@
         {{c.name}}
       </option>
     </select>
-    {{centar.address}}asdd
+
   </div>
 
   <div class="row">
@@ -38,6 +38,7 @@
       <thead>
       <tr>
         <th>Date</th>
+        <th>Hospital</th>
         <th>Time</th>
         <th>Duration</th>
       </tr>
@@ -45,6 +46,7 @@
       <tbody>
       <tr *ngFor="let t of termin">
         <td>{{t.date}}</td>
+        <td>{{t.centar.name}}</td>
         <td>{{t.time}}</td>
         <td>{{t.duration}}</td>
       </tr>
