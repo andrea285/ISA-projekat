@@ -13,20 +13,33 @@ public class SlobodanTermin {
     private String time;
     private Integer duration; //min
 
-    public SlobodanTermin(Long id, String date, String time, Integer duration) {
+    @ManyToOne
+    private Centar centar;
+
+    public SlobodanTermin(Long id, String date, String time, Integer duration, Centar centar) {
         this.id = id;
         this.date = date;
         this.time = time;
         this.duration = duration;
+        this.centar = centar;
     }
 
-    public SlobodanTermin(String date, String time, Integer duration) {
+    public SlobodanTermin(String date, String time, Integer duration, Centar centar) {
         this.date = date;
         this.time = time;
         this.duration = duration;
+        this.centar = centar;
     }
 
     public SlobodanTermin() {
+    }
+
+    public Centar getCentar() {
+        return centar;
+    }
+
+    public void setCentar(Centar centar) {
+        this.centar = centar;
     }
 
     public String getDate() {

@@ -30,6 +30,7 @@ public class SlobodanTerminController {
     //@PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping
     public ResponseEntity<?> save(@RequestBody SlobodanTermin slobodanTermin){
+        log.error("test4 {}", slobodanTermin.getCentar().toString());
         log.error("does exist {}", slobodanTerminImpl.isAvailable(slobodanTermin.getDate(), slobodanTermin.getTime(), slobodanTermin.getDuration()));
         if(!slobodanTerminImpl.isAvailable(slobodanTermin.getDate(), slobodanTermin.getTime(), slobodanTermin.getDuration())){
 
