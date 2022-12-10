@@ -42,7 +42,7 @@ public class SlobodanTerminImpl implements SlobodanTerminService {
             //log.error("test1 {}", term);
             Date newTerm = sdf.parse(date + " " + time);
             Date termWithDuration = sdf.parse(st.getDate() + " " + st.getTime());
-            termWithDuration.setTime(termWithDuration.getTime()+duration*60*1000);
+            termWithDuration.setTime(termWithDuration.getTime()+st.getDuration()*60*1000);
             if (date.equals(st.getDate())) {
 
 
