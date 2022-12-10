@@ -18,6 +18,12 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {NgxMaterialTimepickerModule} from "ngx-material-timepicker";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {MaterialExampleModule} from "./material/material.module";
+import { AppointmentsComponent } from './appointments/appointments.component';
+import {
+  NgxMatDatetimePickerModule,
+  NgxMatNativeDateModule,
+  NgxMatTimepickerModule
+} from "@angular-material-components/datetime-picker";
 
 
 @NgModule({
@@ -26,7 +32,8 @@ import {MaterialExampleModule} from "./material/material.module";
     UserComponent,
     UserProfilComponent,
     SearchCentarComponent,
-    FreeTerminComponent
+    FreeTerminComponent,
+    AppointmentsComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +49,11 @@ import {MaterialExampleModule} from "./material/material.module";
     BrowserAnimationsModule,
     NgxMaterialTimepickerModule,
     MatSnackBarModule,
-    MaterialExampleModule
+    MaterialExampleModule,
+    NgxMatDatetimePickerModule,
+    NgxMatNativeDateModule,
+    NgxMatDatetimePickerModule,
+    NgxMatTimepickerModule
 
   ],
   providers: [],

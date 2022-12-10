@@ -1,0 +1,22 @@
+<div>
+
+  <mat-form-field>
+    <input matInput [ngxMatDatetimePicker]="picker"
+           placeholder="Choose a date"
+           [formControl]="dateControl"
+           [disabled]="disabled"
+    [(ngModel)]="date">
+    <mat-datepicker-toggle matSuffix [for]="$any(picker)">
+    </mat-datepicker-toggle>
+    <ngx-mat-datetime-picker #picker
+                             [showSpinners]="showSpinners"
+                             [showSeconds]="showSeconds"
+                             [stepHour]="stepHour"
+                             [stepMinute]="stepMinute"
+                             [touchUi]="touchUi"
+                             [color]="color">
+    </ngx-mat-datetime-picker>
+  </mat-form-field>
+
+  {{date}}
+</div>
