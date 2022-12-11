@@ -1,22 +1,79 @@
 <div>
 
-  <mat-form-field>
-    <input matInput [ngxMatDatetimePicker]="picker"
-           placeholder="Choose a date"
-           [formControl]="dateControl"
-           [disabled]="disabled"
-    [(ngModel)]="date">
-    <mat-datepicker-toggle matSuffix [for]="$any(picker)">
-    </mat-datepicker-toggle>
-    <ngx-mat-datetime-picker #picker
-                             [showSpinners]="showSpinners"
-                             [showSeconds]="showSeconds"
-                             [stepHour]="stepHour"
-                             [stepMinute]="stepMinute"
-                             [touchUi]="touchUi"
-                             [color]="color">
-    </ngx-mat-datetime-picker>
-  </mat-form-field>
+<!--  <mat-form-field>-->
+<!--    <input matInput [ngxMatDatetimePicker]="picker"-->
+<!--           placeholder="Choose a date"-->
+<!--           [formControl]="dateControl"-->
+<!--           [disabled]="disabled"-->
+<!--    [(ngModel)]="date">-->
+<!--    <mat-datepicker-toggle matSuffix [for]="$any(picker)">-->
+<!--    </mat-datepicker-toggle>-->
+<!--    <ngx-mat-datetime-picker #picker-->
+<!--                             [showSpinners]="showSpinners"-->
+<!--                             [showSeconds]="showSeconds"-->
+<!--                             [stepHour]="stepHour"-->
+<!--                             [stepMinute]="stepMinute"-->
+<!--                             [touchUi]="touchUi"-->
+<!--                             [color]="color">-->
+<!--    </ngx-mat-datetime-picker>-->
+<!--  </mat-form-field>-->
 
-  {{date}}
+<!--  <ngx-mat-timepicker></ngx-mat-timepicker>-->
+
+<!--  <ngx-mat-timepicker></ngx-mat-timepicker>-->
+
+
+
+<div class="row">
+  <div class="col">
+  <mat-form-field appearance="fill">
+    <mat-label>Choose a date</mat-label>
+    <input matInput [matDatepicker]="picker2" [(ngModel)]="date">
+
+    <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+    <mat-datepicker #picker2></mat-datepicker>
+  </mat-form-field>
+  </div>
+
+  <div class="col">
+    <mat-form-field appearance="fill">
+      <mat-label>Choose START time</mat-label>
+    <input matInput [format]="24" [ngxTimepicker]="picker1" placeholder="Choose time" [(ngModel)]="startTime">
+    <ngx-material-timepicker #picker1></ngx-material-timepicker>
+    </mat-form-field>
+  </div>
+
+  <div class="col">
+    <mat-form-field appearance="fill">
+      <mat-label>Choose END time</mat-label>
+      <input matInput [format]="24" [ngxTimepicker]="picker3" placeholder="Choose time" [(ngModel)]="endTime">
+      <ngx-material-timepicker #picker3></ngx-material-timepicker>
+    </mat-form-field>
+  </div>
+
+  <button class="btn btn-primary" (click)="search()">Search</button>
+
+</div>
+
+  <div class="row">
+    <table class="table table-hover">
+      <thead>
+      <tr>
+        <th>Date</th>
+        <th>Hospital</th>
+        <th>Address</th>
+        <th>Review</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let ft of freeTermins">
+        <td>{{ft.date}} {{ft.time}}</td>
+        <td>{{ft.centar.name}}</td>
+        <td>{{ft.centar.address}}</td>
+        <td>{{ft.centar.review}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
 </div>
