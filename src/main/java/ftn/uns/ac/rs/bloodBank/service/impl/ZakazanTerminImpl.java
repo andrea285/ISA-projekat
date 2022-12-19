@@ -48,4 +48,10 @@ public class ZakazanTerminImpl implements ZakazanTerminService {
         }
         return specificFreeTermin;
     }
+
+    @Override
+    public List<ZakazanTermin> getAllZakazaniTermini(Long id) {
+        return zakazanTerminRepository.getAllByKorisnik_Id(id);
+    }
+
 }

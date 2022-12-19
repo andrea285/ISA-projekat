@@ -26,6 +26,6 @@ public class OsnovneInformacijeServiceImpl implements OsnovneInformacijeService 
 
     @Override
     public OsnovneInformacije findInfoByUserId(Long id) {
-        return osnovneInformacijeRepository.findByKorisnik_Id(id);
+        return osnovneInformacijeRepository.findByKorisnikId_Id(id);
     }
 }

@@ -8,7 +8,10 @@ public class OsnovneInformacije {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String fullNameWithParent;
+
+    @Transient
+    private long korisnik;
+    private String fullName;
     private String jmbg;
     private Date dateOfBirth;
     private char sex;
@@ -24,14 +27,15 @@ public class OsnovneInformacije {
     private String url;
 
     @OneToOne
-    private Korisnik korisnik;
+    private Korisnik korisnikId;
 
     public OsnovneInformacije() {
     }
 
-    public OsnovneInformacije(Long id, String fullNameWithParent, String jmbg, Date dateOfBirth, char sex, String address, String district, String city, String homeNumber, String jobNumber, String mobile, String occupation, String jobTitle, int previousDonations, String url, Korisnik korisnik) {
+    public OsnovneInformacije(Long id, long korisnik, String fullName, String jmbg, Date dateOfBirth, char sex, String address, String district, String city, String homeNumber, String jobNumber, String mobile, String occupation, String jobTitle, int previousDonations, String url, Korisnik korisnikId) {
         this.id = id;
-        this.fullNameWithParent = fullNameWithParent;
+        this.korisnik = korisnik;
+        this.fullName = fullName;
         this.jmbg = jmbg;
         this.dateOfBirth = dateOfBirth;
         this.sex = sex;
@@ -45,11 +49,11 @@ public class OsnovneInformacije {
         this.jobTitle = jobTitle;
         this.previousDonations = previousDonations;
         this.url = url;
-        this.korisnik = korisnik;
+        this.korisnikId = korisnikId;
     }
 
-    public OsnovneInformacije(String fullNameWithParent, String jmbg, Date dateOfBirth, char sex, String address, String district, String city, String homeNumber, String jobNumber, String mobile, String occupation, String jobTitle, int previousDonations, String url, Korisnik korisnik) {
-        this.fullNameWithParent = fullNameWithParent;
+    public OsnovneInformacije(String fullName, String jmbg, Date dateOfBirth, char sex, String address, String district, String city, String homeNumber, String jobNumber, String mobile, String occupation, String jobTitle, int previousDonations, String url, Korisnik korisnikId) {
+        this.fullName = fullName;
         this.jmbg = jmbg;
         this.dateOfBirth = dateOfBirth;
         this.sex = sex;
@@ -63,7 +67,7 @@ public class OsnovneInformacije {
         this.jobTitle = jobTitle;
         this.previousDonations = previousDonations;
         this.url = url;
-        this.korisnik = korisnik;
+        this.korisnikId = korisnikId;
     }
 
     public Long getId() {
@@ -74,12 +78,12 @@ public class OsnovneInformacije {
         this.id = id;
     }
 
-    public String getFullNameWithParent() {
-        return fullNameWithParent;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setFullNameWithParent(String fullNameWithParent) {
-        this.fullNameWithParent = fullNameWithParent;
+    public void setFullName(String fullNameWithParent) {
+        this.fullName = fullNameWithParent;
     }
 
     public String getJmbg() {
@@ -186,11 +190,41 @@ public class OsnovneInformacije {
         this.url = url;
     }
 
-    public Korisnik getKorisnik() {
+    public Korisnik getKorisnikId() {
+        return korisnikId;
+    }
+
+    public long getKorisnik() {
         return korisnik;
     }
 
-    public void setKorisnik(Korisnik korisnik) {
+    public void setKorisnik(long korisnik) {
         this.korisnik = korisnik;
+    }
+
+    public void setKorisnikId(Korisnik korisnikId) {
+        this.korisnikId = korisnikId;
+    }
+
+    @Override
+    public String toString() {
+        return "OsnovneInformacije{" +
+                "id=" + id +
+                ", fullName='" + fullName + '\'' +
+                ", jmbg='" + jmbg + '\'' +
+                ", dateOfBirth=" + dateOfBirth +
+                ", sex=" + sex +
+                ", address='" + address + '\'' +
+                ", district='" + district + '\'' +
+                ", city='" + city + '\'' +
+                ", homeNumber='" + homeNumber + '\'' +
+                ", jobNumber='" + jobNumber + '\'' +
+                ", mobile='" + mobile + '\'' +
+                ", occupation='" + occupation + '\'' +
+                ", jobTitle='" + jobTitle + '\'' +
+                ", previousDonations=" + previousDonations +
+                ", url='" + url + '\'' +
+                ", korisnikId=" + korisnikId +
+                '}';
     }
 }

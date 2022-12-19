@@ -5,6 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface OsnovneInformacijeRepository extends JpaRepository<OsnovneInformacije, Long> {
 
-    OsnovneInformacije findByKorisnik_Id(Long id);
+    OsnovneInformacije findByKorisnikId_Id(Long id);
 
 }

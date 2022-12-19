@@ -12,4 +12,6 @@ public interface ZakazanTerminService {
 
     @SneakyThrows
     List<SlobodanTermin> getAllFreeTermins(String date, String startTime, String endTime);
+
+    List<ZakazanTermin> getAllZakazaniTermini(Long id);
 }
