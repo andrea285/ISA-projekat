@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col">
+      <mat-checkbox [(ngModel)]="upitnik.dobrovoljan" (change)="onChange()">Да ли сте до сада добровољно давали крв или компоненте крви?</mat-checkbox>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <mat-checkbox [(ngModel)]="upitnik.odbijen" (change)="onChange()">Да ли сте икада били одбијени као давалац крви или компоненте крви?</mat-checkbox>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <mat-checkbox [(ngModel)]="upitnik.nahranjen" (change)="onChange()">Да ли сте нешто јели пре доласка на давање крви или компоненте крви?</mat-checkbox>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <mat-checkbox [(ngModel)]="upitnik.lekovi" (change)="onChange()">Да ли редовно (свакодневно) узимате било какве лекове?</mat-checkbox>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <mat-checkbox [(ngModel)]="upitnik.tetoviran" (change)="onChange()">Да ли сте у последњих 6 месеци имали тетоважу?</mat-checkbox>
+  </div>
+</div>
+

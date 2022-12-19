@@ -10,6 +10,7 @@
   },
   "private": true,
   "dependencies": {
+    "@almothafar/angular-signature-pad": "^5.0.1",
     "@angular-material-components/datetime-picker": "^8.0.0",
     "@angular/animations": "^14.2.0",
     "@angular/common": "^14.2.0",

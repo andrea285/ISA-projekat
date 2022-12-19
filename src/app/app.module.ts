@@ -24,6 +24,9 @@ import {
   NgxMatNativeDateModule,
   NgxMatTimepickerModule
 } from "@angular-material-components/datetime-picker";
+import { QuizComponent } from './quiz/quiz.component';
+import { PersonalInfoComponent } from './quiz/personal-info/personal-info.component';
+import { QuestionsComponent } from './quiz/questions/questions.component';
 
 
 @NgModule({
@@ -33,7 +36,10 @@ import {
     UserProfilComponent,
     SearchCentarComponent,
     FreeTerminComponent,
-    AppointmentsComponent
+    AppointmentsComponent,
+    QuizComponent,
+    PersonalInfoComponent,
+    QuestionsComponent
   ],
   imports: [
     BrowserModule,

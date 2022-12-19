@@ -7,6 +7,7 @@ import {UserProfilComponent} from "./user/user-profil/user-profil.component";
 import {SearchCentarComponent} from "./search-centar/search-centar.component";
 import {FreeTerminComponent} from "./free-termin/free-termin.component";
 import {AppointmentsComponent} from "./appointments/appointments.component";
+import {QuizComponent} from "./quiz/quiz.component";
 
 const routes: Routes=[
   {path: '', component: AppComponent},
@@ -14,7 +15,8 @@ const routes: Routes=[
   {path: 'user', component: UserProfilComponent},
   {path: 'centar', component: SearchCentarComponent},
   {path: 'termin', component: FreeTerminComponent},
-  {path: 'appointment', component: AppointmentsComponent}
+  {path: 'appointment', component: AppointmentsComponent},
+  {path: 'quiz', component: QuizComponent}
 
 ];
 
