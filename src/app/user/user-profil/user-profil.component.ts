@@ -68,7 +68,7 @@ export class UserProfilComponent implements OnInit {
           password:user.password,
           email:user.email,
           address:user.address,
-          city:user.address,
+          city:user.city,
           state:user.state,
           jmbg:user.jmbg,
           phone:user.phone,
