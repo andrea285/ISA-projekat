@@ -11,4 +11,6 @@ public interface SlobodanTerminService {
 
     @SneakyThrows
     Boolean isAvailable(String date, String time, Integer duration);
+
+    SlobodanTermin findById(Long id);
 }

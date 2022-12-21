@@ -16,7 +16,9 @@ public class UpitnikServiceImpl implements UpitnikService {
 
     @Override
     public void save(Upitnik upitnik) {
-        upitnikRepository.save(upitnik);
+        Upitnik u = new Upitnik(upitnik.dobrovoljan(),upitnik.odbijen(), upitnik.lekovi(), upitnik.nahranjen(), upitnik.tetoviran(), upitnik.korisnik());
+
+        upitnikRepository.save(u);
     }
 
     @Override

@@ -59,4 +59,11 @@ public class SlobodanTerminImpl implements SlobodanTerminService {
         }
         return exist;
     }
+
+
+
+    @Override
+    public SlobodanTermin findById(Long id) {
+        return slobodanTerminRepository.findById(id).orElse(null);
+    }
 }

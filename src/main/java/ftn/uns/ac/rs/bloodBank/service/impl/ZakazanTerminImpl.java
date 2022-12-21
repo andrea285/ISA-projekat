@@ -25,6 +25,7 @@ public class ZakazanTerminImpl implements ZakazanTerminService {
 
     @Override
     public void save(ZakazanTermin zakazanTermin) {
+        zakazanTerminRepository.save(zakazanTermin);
 
     }
 
@@ -38,10 +39,10 @@ public class ZakazanTerminImpl implements ZakazanTerminService {
         Date startApp = sdf.parse(date + " " + startTime);
         Date endApp = sdf.parse(date + " " + endTime);
         for (SlobodanTermin st:allFreeTermin
-             ) {
+        ) {
             Date term = sdf.parse(st.getDate() + " " + st.getTime());
 
-                if (term.after(startApp) && term.before(endApp)){
+            if (term.after(startApp) && term.before(endApp)){
 
                 specificFreeTermin.add(st);
             }

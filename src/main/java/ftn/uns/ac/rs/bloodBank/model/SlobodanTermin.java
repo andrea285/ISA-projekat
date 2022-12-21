@@ -1,8 +1,11 @@
 package ftn.uns.ac.rs.bloodBank.model;
 
+import lombok.ToString;
+
 import javax.persistence.*;
 
 @Entity
+@ToString
 public class SlobodanTermin {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

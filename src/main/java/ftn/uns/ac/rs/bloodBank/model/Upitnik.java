@@ -5,8 +5,7 @@ import javax.persistence.*;
 @Entity
 public class Upitnik {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private boolean dobrovoljan;
@@ -17,15 +16,6 @@ public class Upitnik {
 
     @OneToOne
     private Korisnik korisnik;
-
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public Upitnik() {
     }
@@ -49,51 +39,66 @@ public class Upitnik {
         this.korisnik = korisnik;
     }
 
-    public boolean isDobrovoljan() {
+    public Long id() {
+        return id;
+    }
+
+    public Upitnik setId(Long id) {
+        this.id = id;
+        return this;
+    }
+
+    public boolean dobrovoljan() {
         return dobrovoljan;
     }
 
-    public void setDobrovoljan(boolean dobrovoljan) {
+    public Upitnik setDobrovoljan(boolean dobrovoljan) {
         this.dobrovoljan = dobrovoljan;
+        return this;
     }
 
-    public boolean isOdbijen() {
+    public boolean odbijen() {
         return odbijen;
     }
 
-    public void setOdbijen(boolean odbijen) {
+    public Upitnik setOdbijen(boolean odbijen) {
         this.odbijen = odbijen;
+        return this;
     }
 
-    public boolean isLekovi() {
+    public boolean lekovi() {
         return lekovi;
     }
 
-    public void setLekovi(boolean lekovi) {
+    public Upitnik setLekovi(boolean lekovi) {
         this.lekovi = lekovi;
+        return this;
     }
 
-    public boolean isNahranjen() {
+    public boolean nahranjen() {
         return nahranjen;
     }
 
-    public void setNahranjen(boolean nahranjen) {
+    public Upitnik setNahranjen(boolean nahranjen) {
         this.nahranjen = nahranjen;
+        return this;
     }
 
-    public boolean isTetoviran() {
+    public boolean tetoviran() {
         return tetoviran;
     }
 
-    public void setTetoviran(boolean tetoviran) {
+    public Upitnik setTetoviran(boolean tetoviran) {
         this.tetoviran = tetoviran;
+        return this;
     }
 
-    public Korisnik getKorisnik() {
+    public Korisnik korisnik() {
         return korisnik;
     }
 
-    public void setKorisnik(Korisnik korisnik) {
+    public Upitnik setKorisnik(Korisnik korisnik) {
         this.korisnik = korisnik;
+        return this;
     }
 }

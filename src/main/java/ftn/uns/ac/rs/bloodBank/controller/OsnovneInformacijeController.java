@@ -28,17 +28,21 @@ public class OsnovneInformacijeController {
 
     @GetMapping("/{userId}")
     public ResponseEntity<OsnovneInformacije> findOsnovneInfo(@PathVariable Long userId){
-        return new ResponseEntity<>(osnovneInformacijeService.findInfoByUserId(userId), HttpStatus.OK);
+        OsnovneInformacije osnovneInformacije =osnovneInformacijeService.findInfoByUserId(userId);
+        log.error(osnovneInformacije.toString());
+        return new ResponseEntity<>(osnovneInformacije, HttpStatus.OK);
     }
 
     @PostMapping
-    public ResponseEntity<String> save(@RequestBody Kviz kviz){
-        log.error("pi {}", kviz.getP().getKorisnik());
+    public ResponseEntity<OsnovneInformacije> save(@RequestBody Kviz kviz){
         Korisnik k = korisnikService.findById(kviz.getP().getKorisnik());
         kviz.getP().setKorisnikId(k);
         osnovneInformacijeService.save(kviz.getP());
+        kviz.getU().setKorisnik(k);
         upitnikService.save(kviz.getU());
-        return new ResponseEntity<>("Uspesno ste sacuvali", HttpStatus.CREATED);
+
+        return new ResponseEntity<>(kviz.getP(), HttpStatus.CREATED);
+
     }
 
     @PutMapping

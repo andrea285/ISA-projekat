@@ -1,9 +1,12 @@
 package ftn.uns.ac.rs.bloodBank.model;
 
+import lombok.ToString;
+
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
+@ToString
 public class OsnovneInformacije {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

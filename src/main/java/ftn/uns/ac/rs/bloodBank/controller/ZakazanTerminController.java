@@ -1,6 +1,12 @@
 package ftn.uns.ac.rs.bloodBank.controller;
 
+import ftn.uns.ac.rs.bloodBank.model.Korisnik;
+import ftn.uns.ac.rs.bloodBank.model.SlobodanTermin;
 import ftn.uns.ac.rs.bloodBank.model.ZakazanTermin;
+import ftn.uns.ac.rs.bloodBank.model.ZakazaniTerminHttpRequst;
+import ftn.uns.ac.rs.bloodBank.service.impl.EmailServiceImpl;
+import ftn.uns.ac.rs.bloodBank.service.impl.KorisnikServiceImpl;
+import ftn.uns.ac.rs.bloodBank.service.impl.SlobodanTerminImpl;
 import ftn.uns.ac.rs.bloodBank.service.impl.ZakazanTerminImpl;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
@@ -22,9 +28,15 @@ import java.util.Date;
 public class ZakazanTerminController {
 
     private final ZakazanTerminImpl zakazanTermin;
+    private final KorisnikServiceImpl korisnikService;
+    private final SlobodanTerminImpl slobodanTermin;
+    private final EmailServiceImpl emailService;
 
-    public ZakazanTerminController(ZakazanTerminImpl zakazanTermin) {
+    public ZakazanTerminController(ZakazanTerminImpl zakazanTermin, KorisnikServiceImpl korisnikService, SlobodanTerminImpl slobodanTermin, EmailServiceImpl emailService) {
         this.zakazanTermin = zakazanTermin;
+        this.korisnikService = korisnikService;
+        this.slobodanTermin = slobodanTermin;
+        this.emailService = emailService;
     }
 
     @GetMapping
@@ -48,19 +60,39 @@ public class ZakazanTerminController {
         if(size == 0){
             return new ResponseEntity<>(true, HttpStatus.OK);
         }
-
         ZakazanTermin zt = zakazanTermins.get(size-1);
+        log.error("test {}", zt.toString());
         LocalDate trenutni = LocalDate.now();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         Date date = sdf.parse(zt.getSlobodanTermin().getDate()+" "+zt.getSlobodanTermin().getTime());
         LocalDate lastTime = LocalDateTime.ofInstant(date.toInstant(), ZoneId.systemDefault()).toLocalDate();
         LocalDate beforeSix = trenutni.minusMonths(6);
 
-        if(lastTime.isAfter(beforeSix)){
+        if(lastTime.isBefore(beforeSix)){
             return new ResponseEntity<>(true, HttpStatus.OK);
         }
         else{
-            return new ResponseEntity<>(false, HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(false, HttpStatus.OK);
         }
+    }
+    @PostMapping
+    public ResponseEntity<ZakazanTermin> saveZakazanTermin(@RequestBody ZakazaniTerminHttpRequst zakazaniTerminHttpRequst){
+
+        Korisnik k= korisnikService.findById(zakazaniTerminHttpRequst.getKorisnikId());
+        SlobodanTermin st = slobodanTermin.findById(zakazaniTerminHttpRequst.getSlobodanTerminId());
+        ZakazanTermin zt = new ZakazanTermin();
+        zt.setKorisnik(k);
+        zt.setSlobodanTermin(st);
+
+        zakazanTermin.save(zt);
+
+        emailService.sendEmail(k.getEmail(), "Zakazan termin", "Uspesno ste zakazali termin za donaciju krvi. Datum: "+st.getDate()+" Vreme: "+st.getTime());
+        return new ResponseEntity<>(zt, HttpStatus.OK);
+
+
+    }
+    @GetMapping("/find/{id}")
+    public ResponseEntity<?> findZakazanTermin(@PathVariable Long id){
+        return new ResponseEntity<>(zakazanTermin.getAllZakazaniTermini(id), HttpStatus.OK);
     }
 }

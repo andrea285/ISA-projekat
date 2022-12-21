@@ -1,12 +1,15 @@
 package ftn.uns.ac.rs.bloodBank.model;
 
+import lombok.ToString;
+
 import javax.persistence.*;
 
 @Entity
+@ToString
 @Table(name = "KORISNIK")
 public class Korisnik {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "FIRST_NAME")
