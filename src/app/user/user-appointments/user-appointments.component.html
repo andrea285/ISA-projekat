@@ -1,0 +1,21 @@
+
+<div class="row">
+  <table  class="table table-hover" >
+    <thead>
+    <tr>
+      <th>Date</th>
+      <th>Hospital</th>
+      <th>Address</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let a of userApps">
+      <td>{{a.slobodanTermin.date}} {{a.slobodanTermin.time}}</td>
+      <td>{{a.slobodanTermin.centar.name}}</td>
+      <td>{{a.slobodanTermin.centar.address}}</td>
+
+
+    </tr>
+    </tbody>
+  </table>
+</div>

@@ -15,6 +15,7 @@ import {Upitnik} from "../quiz/personal-info/upitnik";
 import {Route, Router, Routes} from "@angular/router";
 import {PersonalInfoService} from "../quiz/personal-info/personal-info.service";
 import {QuizService} from "../quiz/quiz.service";
+import {SharingDataService} from "../shared/sharing-data.service";
 
 
 @Component({
@@ -42,7 +43,7 @@ export class AppointmentsComponent implements OnInit {
     jobNumber: '',
     occupation: '',
     jobTitle: '',
-    previousDinations: '',
+    previousDonations: '',
     korisnik: 0
   }
 
@@ -77,7 +78,8 @@ export class AppointmentsComponent implements OnInit {
               private _snackBar: MatSnackBar,
               private rout: Router,
               private personalInfoService: PersonalInfoService,
-              private quizService: QuizService) {
+              private quizService: QuizService,
+              private sharedService: SharingDataService) {
   }
 
   ngOnInit(): void {
@@ -98,45 +100,59 @@ export class AppointmentsComponent implements OnInit {
     }
   }
 
-  schedule() {
+  schedule(id:number) {
     this.quizService.sixMonthsDonation().subscribe(value => {
       this.isSixMonths = value;
-      console.log(value);
+
       console.log(this.isSixMonths);
-    })
-    console.log(this.isSixMonths + 'nestoooo');
-    if(this.isSixMonths) {
-      this.userService.getUser(5).subscribe({
-        next:(result) => {
-          this.user = result;
-        },
-        error:(err) => {
-          this._snackBar.open(err, 'close', {
-            duration:3000
-          })
-        }
-      })
-      this.personalInfoService.findPersonalInfo(5).subscribe({
-        next:(result) => {
-          this.personalInfo = result;
-        },
-        error:(err) => {
-          this._snackBar.open(err.message, 'close', {
-            duration:3000
-          })
+      console.log(value)
 
-
-        }, complete:() =>{
-
-          if(this.personalInfo == null){
-            this.rout.navigate(['/quiz']);
+      this.sharedService.setAppointmentId(id);
+      if(this.isSixMonths) {
+        this.userService.getUser(5).subscribe({
+          next:(result) => {
+            this.user = result;
+          },
+          error:(err) => {
+            this._snackBar.open(err, 'close', {
+              duration:3000
+            })
           }
-        }})
-    }
-    else{
-      this._snackBar.open('Nije proslo 6 meseci od zadnjeg davanja krvi', 'zatvori', {
-        duration: 3000
-      })
-    }
+        })
+        this.personalInfoService.findPersonalInfo(5).subscribe({
+          next:(result) => {
+            this.personalInfo = result;
+            console.log(this.personalInfo);
+            console.log(result);
+          },
+          error:(err) => {
+
+
+            this.rout.navigate(['/quiz']);
+
+          }, complete:() =>{
+
+            console.log(this.personalInfo);
+
+            if(this.personalInfo == null){
+              this.rout.navigate(['/quiz']);
+            }
+            else{
+              this.appointmentService.saveAppointment(id,5).subscribe({
+                complete: () => {
+                  this.rout.navigate(['/user'], {queryParams: {id: 5}});
+
+                }
+              });
+            }
+          }})
+
+      }
+      else{
+        this._snackBar.open('Nije proslo 6 meseci od zadnjeg davanja krvi', 'zatvori', {
+          duration: 3000
+        })
+      }    })
+
   }
 }

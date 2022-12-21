@@ -27,6 +27,7 @@ import {
 import { QuizComponent } from './quiz/quiz.component';
 import { PersonalInfoComponent } from './quiz/personal-info/personal-info.component';
 import { QuestionsComponent } from './quiz/questions/questions.component';
+import { UserAppointmentsComponent } from './user/user-appointments/user-appointments.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { QuestionsComponent } from './quiz/questions/questions.component';
     AppointmentsComponent,
     QuizComponent,
     PersonalInfoComponent,
-    QuestionsComponent
+    QuestionsComponent,
+    UserAppointmentsComponent
   ],
   imports: [
     BrowserModule,

@@ -15,5 +15,7 @@ export class PersonalInfoService {
   findPersonalInfo(id: number): Observable<PersonalInfo>{
     return this.http.get<PersonalInfo>('http://localhost:8080/api/v1/osnovneinformacije/' + id);
   }
+
+
 }
 

@@ -71,23 +71,23 @@ export class FreeTerminComponent implements OnInit {
       if(this.duration >= 5 && this.duration <= 30){
 
 
-      this.http.postAllFreeTerm(this.date, this.time, this.duration, this.centar).subscribe({
-        error: (e)=>{
-          this._snackBar.open('termin nije kreiran jer izabrano vreme vec postoji u bazi', 'zatvori', {
-            duration:2000
-          })
-        },
-        complete:()=>{
-          this.http.getAllFreeTerm().subscribe(value => {
-            this.termin=value;
-          })
-          this._snackBar.open('termin je kreiran', 'zatvori', {
-            duration:2000
-          })
-        }
-      })
+        this.http.postAllFreeTerm(this.date, this.time, this.duration, this.centar).subscribe({
+          error: (e)=>{
+            this._snackBar.open('termin nije kreiran jer izabrano vreme vec postoji u bazi', 'zatvori', {
+              duration:2000
+            })
+          },
+          complete:()=>{
+            this.http.getAllFreeTerm().subscribe(value => {
+              this.termin=value;
+            })
+            this._snackBar.open('termin je kreiran', 'zatvori', {
+              duration:2000
+            })
+          }
+        })
 
-    }else{
+      }else{
         this._snackBar.open('trajanje mora biti izmedju 5 i 30min', 'zatvori', {
           duration:2000
         })

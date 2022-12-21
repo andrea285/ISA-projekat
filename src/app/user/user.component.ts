@@ -47,44 +47,50 @@ export class UserComponent implements OnInit {
   //id:number=0;
   constructor(private http:UserService,
               private formBuilder: FormBuilder,
-              private router: ActivatedRoute) { }
+              private router:Router,
+              private activatedRoute: ActivatedRoute) { }
+
 
   ngOnInit(): void {
     //let url=this.router.parseUrl("id");
     //console.log(url)
     let userid = 0;
 
-    this.router.queryParams.subscribe(id=>{
+    this.activatedRoute.queryParams.subscribe(id=>{
       userid=Number(id['id']);
 
 
 
-    this.http.getUser(userid).subscribe((user: User)=>{
-      console.log(this.user);
-      this.user={
-        id:user.id,
-        firstName:user.firstName,
-        lastName:user.lastName,
-        password:user.password,
-        email:user.email,
-        address:user.address,
-        city:user.address,
-        state:user.state,
-        jmbg:user.jmbg,
-        phone:user.phone,
-        job:user.job,
-        information:user.information,
-        gender:user.gender
-      }
-    });
+      this.http.getUser(userid).subscribe((user: User)=>{
+        console.log(this.user);
+        this.user={
+          id:user.id,
+          firstName:user.firstName,
+          lastName:user.lastName,
+          password:user.password,
+          email:user.email,
+          address:user.address,
+          city:user.address,
+          state:user.state,
+          jmbg:user.jmbg,
+          phone:user.phone,
+          job:user.job,
+          information:user.information,
+          gender:user.gender
+        }
+      });
     })
     console.log(this.user)
   }
 
   onSubmit() {
     console.log(this.userForm.value)
-    this.http.updateUser(this.user).subscribe(data=>{
-      console.log(data);
+    this.http.updateUser(this.user).subscribe({
+      next:(data)=>{
+        console.log(data);
+      },complete:()=>{
+        this.router.navigate(['/user?id='+this.user.id]);
+      }
     });
   }
 }

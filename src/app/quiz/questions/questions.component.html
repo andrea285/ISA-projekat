@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col">
-      <mat-checkbox [(ngModel)]="upitnik.dobrovoljan" (change)="onChange()">Да ли сте до сада добровољно давали крв или компоненте крви?</mat-checkbox>
+    <mat-checkbox [(ngModel)]="upitnik.dobrovoljan" (change)="onChange()">Да ли сте до сада добровољно давали крв или компоненте крви?</mat-checkbox>
   </div>
 </div>
 
@@ -28,3 +28,9 @@
   </div>
 </div>
 
+
+{{upitnik.dobrovoljan}}
+{{upitnik.lekovi}}
+{{upitnik.nahranjen}}
+{{upitnik.odbijen}}
+{{upitnik.tetoviran}}

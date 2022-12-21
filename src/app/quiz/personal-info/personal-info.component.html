@@ -8,7 +8,7 @@
   <div class="col">
     <mat-form-field>
       <mat-label>JMBG</mat-label>
-      <input matInput placeholder="" [(ngModel)]="personalinformation.jmbg" (change)="onChange()">
+      <input required matInput placeholder="" [(ngModel)]="personalinformation.jmbg" (change)="onChange()">
     </mat-form-field>
   </div>
 </div>
@@ -17,15 +17,15 @@
   <div class="col">
     <mat-form-field>
       <mat-label>Previous Donations</mat-label>
-      <input matInput placeholder="" type="number" [(ngModel)]="personalinformation.previousDinations" (change)="onChange()">
+      <input matInput placeholder="" type="number" [(ngModel)]="personalinformation.previousDonations" (change)="onChange()">
     </mat-form-field>
   </div>
   <div class="col">
     <mat-form-field>
       <mat-label>Sex</mat-label>
       <mat-select [(ngModel)]="personalinformation.sex" (change)="onChange()">
-        <mat-option value="m">male</mat-option>
-        <mat-option value="f">female</mat-option>
+        <mat-option value="m">m</mat-option>
+        <mat-option value="f">f</mat-option>
       </mat-select>
     </mat-form-field>
   </div>
@@ -102,11 +102,6 @@
     </mat-form-field>
   </div>
 
-  <div class="col">
-    <mat-form-field>
-      <mat-label>District</mat-label>
-      <input matInput placeholder="" [(ngModel)]="personalinformation.district" (change)="onChange()">
-    </mat-form-field>
-  </div>
+
 </div>
 

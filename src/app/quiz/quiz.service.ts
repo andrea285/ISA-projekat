@@ -25,7 +25,7 @@ export class QuizService {
       jobNumber: '',
       occupation: '',
       jobTitle: '',
-      previousDinations: '',
+      previousDonations: '',
       korisnik: 5
     },
     u: {
@@ -41,12 +41,14 @@ export class QuizService {
 
   save(pi: PersonalInfo, u: Upitnik){
     this.q.p=pi;
+    this.q.u=u;
+    console.log(u.dobrovoljan+'testt');
     console.log(pi.fullName);
-   return this.http.post('http://localhost:8080/api/v1/osnovneinformacije', this.q)
+    return this.http.post('http://localhost:8080/api/v1/osnovneinformacije', this.q)
   }
 
   getAllZakazaniTermini(): Observable<Appointments[]>{
-      return this.http.get<Appointments[]>('http://localhost:8080/api/v1/appointments/'+5);
+    return this.http.get<Appointments[]>('http://localhost:8080/api/v1/appointments/'+5);
   }
 
   sixMonthsDonation(): Observable<boolean>{

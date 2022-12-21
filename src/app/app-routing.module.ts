@@ -16,7 +16,8 @@ const routes: Routes=[
   {path: 'centar', component: SearchCentarComponent},
   {path: 'termin', component: FreeTerminComponent},
   {path: 'appointment', component: AppointmentsComponent},
-  {path: 'quiz', component: QuizComponent}
+  {path: 'quiz', component: QuizComponent},
+
 
 ];
 

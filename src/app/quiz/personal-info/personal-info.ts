@@ -12,6 +12,6 @@ export interface PersonalInfo {
   jobNumber: string,
   occupation: string,
   jobTitle: string,
-  previousDinations: string
+  previousDonations: string
   korisnik: number
 }

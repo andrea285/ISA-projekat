@@ -25,6 +25,13 @@ export class QuestionsComponent implements OnInit {
 
   onChange() {
     console.log('sadaewddsc');
+
+    console.log(this.upitnik.odbijen);
+    console.log(this.upitnik.lekovi);
+    console.log(this.upitnik.nahranjen);
+    console.log(this.upitnik.tetoviran);
+    console.log(this.upitnik.dobrovoljan);
+
     this.questionsEmitter.emit(this.upitnik);
   }
 }

@@ -27,7 +27,7 @@ export class PersonalInfoComponent implements OnInit {
     jobNumber: '',
     occupation: '',
     jobTitle: '',
-    previousDinations: '',
+    previousDonations: '',
     korisnik: 0
   }
 
