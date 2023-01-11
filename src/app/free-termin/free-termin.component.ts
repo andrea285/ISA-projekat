@@ -41,7 +41,8 @@ export class FreeTerminComponent implements OnInit {
     date: this.date,
     time: this.time,
     duration: this.duration,
-    centar: this.centar
+    centar: this.centar,
+    reservated: false
   }
 
 
@@ -73,7 +74,7 @@ export class FreeTerminComponent implements OnInit {
 
         this.http.postAllFreeTerm(this.date, this.time, this.duration, this.centar).subscribe({
           error: (e)=>{
-            this._snackBar.open('termin nije kreiran jer izabrano vreme vec postoji u bazi', 'zatvori', {
+            this._snackBar.open('termin nije kreiran jer izabrano vreme vec postoji ili ste izabrali nevalidno vreme', 'zatvori', {
               duration:2000
             })
           },

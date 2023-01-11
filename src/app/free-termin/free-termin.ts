@@ -5,5 +5,6 @@ export interface FreeTermin {
   date: string,
   time: string,
   duration: number,
-  centar: Centar
+  centar: Centar,
+  reservated: boolean
 }

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {User} from "../user";
 import {UserService} from "../user.service";
 import {FormBuilder} from "@angular/forms";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-user-profil',
@@ -46,7 +46,8 @@ export class UserProfilComponent implements OnInit {
   //id:number=0;
   constructor(private http:UserService,
               private formBuilder: FormBuilder,
-              private router: ActivatedRoute) { }
+              private router: ActivatedRoute,
+              private ruter: Router) { }
 
 
   ngOnInit(): void {
@@ -79,6 +80,10 @@ export class UserProfilComponent implements OnInit {
       });
     })
     console.log(this.user)
+  }
+
+  scheduleNew() {
+    this.ruter.navigate(['/appointment'])
   }
 
 }

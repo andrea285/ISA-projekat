@@ -28,4 +28,8 @@ export class AppointmentsService {
   getAllAppointmentsById(id: number): Observable<UserApp[]>{
     return this.http.get<UserApp[]>('http://localhost:8080/api/v1/appointments/find/' + id);
   }
+
+  deleteAppointmentByid(id: number){
+    return this.http.delete('http://localhost:8080/api/v1/appointments', {params: {id: id}})
+  }
 }

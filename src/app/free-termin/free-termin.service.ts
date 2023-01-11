@@ -28,7 +28,8 @@ export class FreeTerminService {
       date: fd,
       time: time,
       duration: duration,
-      centar: centar
+      centar: centar,
+      reservated: false
     };
 
 

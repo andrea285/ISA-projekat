@@ -4,6 +4,7 @@ import {UserService} from "./user.service";
 import {FormBuilder} from "@angular/forms";
 import * as url from "url";
 import {ActivatedRoute, Router} from "@angular/router";
+import {Location} from "@angular/common";
 
 @Component({
   selector: 'app-user',
@@ -48,6 +49,7 @@ export class UserComponent implements OnInit {
   constructor(private http:UserService,
               private formBuilder: FormBuilder,
               private router:Router,
+              private location: Location,
               private activatedRoute: ActivatedRoute) { }
 
 
@@ -70,7 +72,7 @@ export class UserComponent implements OnInit {
           password:user.password,
           email:user.email,
           address:user.address,
-          city:user.address,
+          city:user.city,
           state:user.state,
           jmbg:user.jmbg,
           phone:user.phone,
@@ -89,8 +91,11 @@ export class UserComponent implements OnInit {
       next:(data)=>{
         console.log(data);
       },complete:()=>{
-        this.router.navigate(['/user?id='+this.user.id]);
+        //this.router.navigate(['/user?id='+this.user.id]);
+        this.location.back();
       }
     });
   }
+
+
 }

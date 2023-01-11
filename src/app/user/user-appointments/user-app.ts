@@ -6,4 +6,5 @@ export interface UserApp {
 
   slobodanTermin: FreeTermin,
   korisnik: User,
+  id: number
 }

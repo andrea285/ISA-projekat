@@ -10,7 +10,7 @@ import {AppointmentsComponent} from "./appointments/appointments.component";
 import {QuizComponent} from "./quiz/quiz.component";
 
 const routes: Routes=[
-  {path: '', component: AppComponent},
+  /*{path: '', component: AppComponent},*/
   {path: 'user-update', component: UserComponent},
   {path: 'user', component: UserProfilComponent},
   {path: 'centar', component: SearchCentarComponent},
