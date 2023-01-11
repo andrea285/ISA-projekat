@@ -14,4 +14,8 @@ public interface ZakazanTerminService {
     List<SlobodanTermin> getAllFreeTermins(String date, String startTime, String endTime);
 
     List<ZakazanTermin> getAllZakazaniTermini(Long id);
+
+    ZakazanTermin findById(Long id);
+
+    ZakazanTermin delete(Long id);
 }

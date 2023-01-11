@@ -18,6 +18,8 @@ public class ZakazanTermin {
     @ManyToOne
     private Korisnik korisnik;  //jedan korisnik moze vise termina
 
+
+
     public ZakazanTermin(Long id, SlobodanTermin slobodanTermin, Korisnik korisnik) {
         this.id = id;
         this.slobodanTermin = slobodanTermin;

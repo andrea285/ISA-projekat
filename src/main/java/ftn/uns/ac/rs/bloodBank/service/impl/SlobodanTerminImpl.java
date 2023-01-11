@@ -36,34 +36,54 @@ public class SlobodanTerminImpl implements SlobodanTerminService {
     public Boolean isAvailable(String date, String time, Integer duration) {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm");
         Boolean exist = false;
-        List<SlobodanTermin> allTerm = findAll();
-        for (SlobodanTermin st : allTerm) {
-            Date term = sdf.parse(st.getDate() + " " + st.getTime());
-            //log.error("test1 {}", term);
-            Date newTerm = sdf.parse(date + " " + time);
-            Date termWithDuration = sdf.parse(st.getDate() + " " + st.getTime());
-            termWithDuration.setTime(termWithDuration.getTime()+st.getDuration()*60*1000);
-            if (date.equals(st.getDate())) {
+        Date today = new Date();
+        Date newTerm = sdf.parse(date + " " + time);
+        if(newTerm.after(today)) {
+            List<SlobodanTermin> allTerm = findAll();
+            for (SlobodanTermin st : allTerm) {
+                Date term = sdf.parse(st.getDate() + " " + st.getTime());
+                //log.error("test1 {}", term);
+
+                Date termWithDuration = sdf.parse(st.getDate() + " " + st.getTime());
+                termWithDuration.setTime(termWithDuration.getTime() + st.getDuration() * 60 * 1000);
+                if (date.equals(st.getDate())) {
 
 
-                //if (!term.equals(newTerm)) {
-                if((term.after(newTerm) || term.before(newTerm) && (termWithDuration.before(newTerm)))){
-                    log.error("test {}", newTerm);
-                    exist = false;
-                } else {
-                    //log.error("test2 {}", term);
-                    exist = true;
+                    //if (!term.equals(newTerm)) {
+                    if ((term.after(newTerm) || term.before(newTerm) && (termWithDuration.before(newTerm)))) {
+                        log.error("test {}", newTerm);
+                        exist = false;
+                    } else {
+                        //log.error("test2 {}", term);
+                        exist = true;
+                    }
                 }
-            }
 
+            }
+        }
+        else{
+            exist = true;
         }
         return exist;
     }
 
 
 
+
     @Override
     public SlobodanTermin findById(Long id) {
         return slobodanTerminRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public void setReservation(SlobodanTermin slobodanTermin) {
+        log.debug(slobodanTermin.getReservated()+"asd");
+        slobodanTermin.setReservated(!slobodanTermin.getReservated());
+        log.debug(slobodanTermin.getReservated()+"asd");
+    }
+
+    @Override
+    public List<SlobodanTermin> findAllByReservated(boolean isReservated) {
+        return slobodanTerminRepository.findAllByReservated(isReservated);
     }
 }

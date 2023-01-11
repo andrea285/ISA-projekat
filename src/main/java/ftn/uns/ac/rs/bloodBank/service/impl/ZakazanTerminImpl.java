@@ -42,7 +42,7 @@ public class ZakazanTerminImpl implements ZakazanTerminService {
         ) {
             Date term = sdf.parse(st.getDate() + " " + st.getTime());
 
-            if (term.after(startApp) && term.before(endApp)){
+            if (term.after(startApp) && term.before(endApp) && !st.getReservated()){
 
                 specificFreeTermin.add(st);
             }
@@ -53,6 +53,18 @@ public class ZakazanTerminImpl implements ZakazanTerminService {
     @Override
     public List<ZakazanTermin> getAllZakazaniTermini(Long id) {
         return zakazanTerminRepository.getAllByKorisnik_Id(id);
+    }
+
+    @Override
+    public ZakazanTermin findById(Long id) {
+        return zakazanTerminRepository.findById(id).get();
+    }
+
+    @Override
+    public ZakazanTermin delete(Long id) {
+        ZakazanTermin zt = findById(id);
+        zakazanTerminRepository.delete(zt);
+        return zt;
     }
 
 }

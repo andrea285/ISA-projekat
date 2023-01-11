@@ -16,22 +16,27 @@ public class SlobodanTermin {
     private String time;
     private Integer duration; //min
 
+    @Column(columnDefinition = "boolean default false")
+    private Boolean reservated;
+
     @ManyToOne
     private Centar centar;
 
-    public SlobodanTermin(Long id, String date, String time, Integer duration, Centar centar) {
+    public SlobodanTermin(Long id, String date, String time, Integer duration, Centar centar, Boolean reservated) {
         this.id = id;
         this.date = date;
         this.time = time;
         this.duration = duration;
         this.centar = centar;
+        this.reservated = reservated;
     }
 
-    public SlobodanTermin(String date, String time, Integer duration, Centar centar) {
+    public SlobodanTermin(String date, String time, Integer duration, Centar centar, Boolean reservated) {
         this.date = date;
         this.time = time;
         this.duration = duration;
         this.centar = centar;
+        this.reservated = reservated;
     }
 
     public SlobodanTermin() {
@@ -77,6 +82,10 @@ public class SlobodanTermin {
         this.id = id;
     }
 
+    public Boolean getReservated() {
+        return reservated;
+    }
+
     @Override
     public String toString() {
         return "SlobodanTermin{" +
@@ -85,5 +94,9 @@ public class SlobodanTermin {
                 ", time='" + time + '\'' +
                 ", duration=" + duration +
                 '}';
+    }
+
+    public void setReservated(Boolean reservated) {
+        this.reservated = reservated;
     }
 }

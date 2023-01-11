@@ -13,4 +13,8 @@ public interface SlobodanTerminService {
     Boolean isAvailable(String date, String time, Integer duration);
 
     SlobodanTermin findById(Long id);
+
+    void setReservation(SlobodanTermin slobodanTermin);
+
+    List<SlobodanTermin> findAllByReservated(boolean isReservated);
 }

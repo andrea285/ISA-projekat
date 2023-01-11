@@ -72,7 +72,7 @@ public class ZakazanTerminController {
             return new ResponseEntity<>(true, HttpStatus.OK);
         }
         else{
-            return new ResponseEntity<>(false, HttpStatus.OK);
+            return new ResponseEntity<>(false, HttpStatus.OK);   //todo vratiti u false
         }
     }
     @PostMapping
@@ -84,7 +84,10 @@ public class ZakazanTerminController {
         zt.setKorisnik(k);
         zt.setSlobodanTermin(st);
 
+        slobodanTermin.setReservation(st);
+
         zakazanTermin.save(zt);
+
 
         emailService.sendEmail(k.getEmail(), "Zakazan termin", "Uspesno ste zakazali termin za donaciju krvi. Datum: "+st.getDate()+" Vreme: "+st.getTime());
         return new ResponseEntity<>(zt, HttpStatus.OK);
@@ -94,5 +97,17 @@ public class ZakazanTerminController {
     @GetMapping("/find/{id}")
     public ResponseEntity<?> findZakazanTermin(@PathVariable Long id){
         return new ResponseEntity<>(zakazanTermin.getAllZakazaniTermini(id), HttpStatus.OK);
+    }
+
+    @DeleteMapping
+    public ResponseEntity<?> delete(@RequestParam Long id){
+
+        ZakazanTermin zt = zakazanTermin.findById(id);
+        //SlobodanTermin slobodanTermin1 = slobodanTermin.findById(zt.getSlobodanTermin());
+
+        slobodanTermin.setReservation(zt.getSlobodanTermin());
+
+        return  new ResponseEntity<>(zakazanTermin.delete(id), HttpStatus.OK);
+
     }
 }
