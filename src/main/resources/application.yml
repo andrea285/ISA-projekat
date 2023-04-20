@@ -1,0 +1,38 @@
+spring:
+  mail:
+    host: smtp.gmail.com
+    password: evqufveidwknqjip
+    port: 587
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+    username: dunjabogdanovic00@gmail.com
+  jpa:
+    hibernate:
+      ddl-auto: update
+  #    show-sql: true
+  #    properties:
+  #      hibernate:
+  #        format_sql: true
+  datasource:
+    url: jdbc:mysql://localhost:3306/blood_treasure?useSSL=false&serverTimezone=UTC&createDatabaseIfNotExist=true
+    username: root
+    password:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+server:
+  forward-headers-strategy: framework
+
+
+
+springdoc:
+  swagger-ui:
+    path: /api-docs
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
